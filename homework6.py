@@ -45,13 +45,13 @@ def test_find_suitable_user():
     ]
 
     # TODO найдите пользователя с именем "Olga"
+    suitable_users = []
     for user in users:
         if user['name'] == "Olga":
             suitable_users = user
     assert suitable_users == {"name": "Olga", "age": 45}
 
     # TODO найдите всех пользователей младше 20 лет
-    suitable_users = []
     for user in users:
         if user['age'] <= 20:
             suitable_users.append(user)
@@ -72,24 +72,26 @@ def test_find_suitable_user():
 # "Open Browser [Chrome]"
 
 
-def test_readable_function(*args):
+def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
+
 
 def open_browser(browser_name):
     function_name = open_browser.__name__.replace('_', ' ').title()
     actual_result = f"{function_name} [{browser_name}]"
     assert actual_result == "Open Browser [Chrome]"
-
+    print(actual_result)
 
 def go_to_companyname_homepage(page_url):
     function_name = go_to_companyname_homepage.__name__.replace('_', ' ').title()
     actual_result = f"{function_name} [{page_url}]"
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
-
+    print(actual_result)
 
 def find_registration_button_on_login_page(page_url, button_text):
     function_name = find_registration_button_on_login_page.__name__.replace('_', ' ').title()
     actual_result = f"{function_name} [{page_url}, {button_text}]"
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
+    print(actual_result)
